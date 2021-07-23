@@ -1,13 +1,12 @@
 export interface SocietyInfo {
-
   id: number;
-  nom: String;
-  lieu: String;
-  reponse: boolean;
-  EntretienRH: boolean;
-  EntretienTech: boolean;
-  RetourSociete: String;
-  dateEmissionCV: String;
-  statut: String;
+  nom: string;
+  lieu: string;
+  reponseEmail: string;
+  entretienRH: string;
+  entretienTech: string;
+  statut: string;
+  dateContact: string;
+  PersonneContact: string;
 
 }

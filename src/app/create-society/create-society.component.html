@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <form #f="ngForm" (submit)="addSociety(f)">
+
+    <label for="societyname">SOCITETE</label><br />
+    <input
+      type="text"
+      id="societyname"
+      class="form-control"
+      placeholder="Enter society" ngModel name="societyname"/>
+    <br/>
+
+    <label for="localite">LIEU</label> <br />
+    <select id="localite" class="form-select form-select-sm" ngModel name="localite">
+      <option selected value="">--------</option>
+      <br />
+      <option value="Luxembourg">Luxembourg</option>
+      <option value="Dijon">Belfort</option>
+      <option value="Belfort">Dijon</option>
+      <option value="Besancon">Besancon</option>
+    </select>
+    <br />
+    <label for="reponseEmail">REPONSE EMAIL</label> <br />
+    <select id="reponseEmail" class="form-select form-select-sm" ngModel name="reponseEmail">
+      <option value="">--------</option>
+      <option value="OUI">OUI</option>
+      <option value="NON">NON</option>
+    </select>
+    <br />
+    <label for="entretienRH">ENTRETIEN RH</label> <br />
+    <select id="entretienRH" class="form-select form-select-sm" ngModel name="entretienRH">
+      <option value="">--------</option>
+      <option value="Realise">realise</option>
+      <option value="nonRealise">non realise</option>
+    </select>
+
+    <br />
+    <label for="entretienTech">ENTRETIEN TECHNIQUE</label> <br />
+    <select id="entretienTech" class="form-select form-select-sm" ngModel name="entretienTech">
+      <option value="">--------</option>
+      <option value="Realise">realise</option>
+      <option value="nonRealise">non realise</option>
+    </select>
+    <br />
+    <label for="statut">SITUATION ACTUELLE</label> <br />
+    <select id="statut" class="form-select form-select-sm" ngModel name="statut">
+      <option value="">--------</option>
+      <option value="encours">EN COURS</option>
+      <option value="pasdeReponse">pas de réponse</option>
+    </select>
+    <br />
+    <label for="dateContact">DATE DU PREMIER CONTACT</label> <br />
+    <input type="text" id="dateContact" class="form-control" ngModel name="dateContact"/><br />
+    <br />
+    <label for="PersonneContact">PERSONNE CONTACTE</label> <br />
+    <input type="text" id="PersonneContact" class="form-control" ngModel name="PersonneContact"/><br />
+
+    <button type="submit" class="btn btn-primary">sauvegarder</button>
+  </form>
+</div>

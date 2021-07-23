@@ -1,26 +1,61 @@
-<div class="container mt-5">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>Nom</th>
-        <th>Reponse</th>
-        <th>Entretien RH</th>
-        <th>Entretien Tech</th>
-        <th>Retour Societe</th>
-        <th>Emission du CV</th>
-        <th>Statut</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let info of ListeSociety">
-      <td>{{ info.id }}</td>
-      <td>{{ info.nom }}</td>
-      <td *ngIf="info.reponse">A repondu</td>
-      <td *ngIf="info.EntretienRH">Realiser</td>
-      <td *ngIf="info.EntretienTech === true">Realiser</td>
-      <td>{{ info.RetourSociete }}</td>
-      <td>{{ info.dateEmissionCV }}</td>
-      <td>{{ info.statut }}</td>
-    </tr>
+<div class="container">
+  <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id" >
+      <th mat-header-cell *matHeaderCellDef >No.</th>
+      <td mat-cell *matCellDef="let element" class="position">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="NOM">
+      <th mat-header-cell *matHeaderCellDef>NOM</th>
+      <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="LIEU">
+      <th mat-header-cell *matHeaderCellDef>LIEU</th>
+      <td mat-cell *matCellDef="let element">{{ element.lieu }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Reponse-Email">
+      <th mat-header-cell *matHeaderCellDef>Reponse-Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.reponseEmail }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Entretien-RH">
+      <th mat-header-cell *matHeaderCellDef>Entretien-RH</th>
+      <td mat-cell *matCellDef="let element">{{ element.entretienRH }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Entretien-Tech">
+      <th mat-header-cell *matHeaderCellDef>Entretien-Tech</th>
+      <td mat-cell *matCellDef="let element">{{ element.entretienTech }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="statut">
+      <th mat-header-cell *matHeaderCellDef>statut</th>
+      <td mat-cell *matCellDef="let element">{{ element.statut }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateContact">
+      <th mat-header-cell *matHeaderCellDef>dateContact</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateContact }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="PersonneContact">
+      <th mat-header-cell *matHeaderCellDef>PersonneContact</th>
+      <td mat-cell *matCellDef="let element">{{ element.PersonneContact }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>

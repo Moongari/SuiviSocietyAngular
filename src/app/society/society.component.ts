@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SocieteService } from '../services/societe.service';
 import { SocietyInfo } from '../SocietyInfo';
+
+
+
 
 @Component({
   selector: 'app-society',
@@ -9,47 +13,61 @@ import { SocietyInfo } from '../SocietyInfo';
 export class SocietyComponent implements OnInit {
 
 
-  public ListeSociety: SocietyInfo[];
-  private dataSource: [];
-  constructor() { }
+    public ListeSociety: SocietyInfo[];
+
+    displayedColumns: string[] = ['id', 'NOM', 'LIEU', 'Reponse-Email','Entretien-RH','Entretien-Tech','statut','dateContact','PersonneContact'];
+    public datasource: any;
+  private ELEMENT_DATA: SocietyInfo[];
+
+
+  constructor(private SocService: SocieteService) { }
 
   ngOnInit(): void {
 
-    this.ListeSociety = this.getData();
-
+    // this.ListeSociety = this.getData();
+    this.ELEMENT_DATA = this.getData();
+    this.datasource = this.ELEMENT_DATA;
+    this.displayedColumns;
   }
 
-  displayedColumns: string[] = ['id', 'nom', 'lieu', 'reponse'];
-  getData() {
+
+
+// recupere les données
+   getData() {
 
     return [
       {
-        id: Date.now(),
-        nom: "SOPRA STERIA",
-        lieu: "Luxembourg",
-        reponse: true,
-        EntretienRH: true,
-        EntretienTech: true,
-        RetourSociete: "Reste a passé le dernier entretien !",
-        dateEmissionCV: "courant juillet",
-        statut: "En Cours de negociation"
-
-      },
+            id: Date.now(),
+            nom: "SOPRA STERIA",
+            lieu: "Luxembourg",
+            reponseEmail: "oui",
+            entretienRH: "realise",
+            entretienTech: "realisé",
+            statut: "En cours",
+            dateContact: "juillet",
+            PersonneContact: "Valentin ALIZON",
+       },
       {
         id: Date.now()+1,
-        nom: "CTG",
-        lieu: "Luxembourg",
-        reponse: true,
-        EntretienRH: true,
-        EntretienTech: true,
-        RetourSociete: "effectuée",
-        dateEmissionCV: "courant juillet",
-        statut: "Attente pour entretien Product manager"
+         nom: "CTG",
+         lieu: "Luxembourg",
+         reponseEmail: "oui",
+         entretienRH: "realise",
+         entretienTech: "realisé",
+         statut: "en cours",
+         dateContact: "courant juillet",
+         PersonneContact: "Thibault Monin"
 
-        }
+      }
 
-    ]
+   ]
 
 
   }
+
+
+
+
 }
+
+

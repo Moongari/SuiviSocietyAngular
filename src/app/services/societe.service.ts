@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
+import { SocietyInfo } from '../SocietyInfo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SocieteService {
+   tabSociety: string[] ;
+  constructor() {}
 
-  tabSociety : any[];
-  constructor() { }
+  //permet de sauvegarder les données dans un array en vue d'une base de données.
 
+  addSuiviSociety(soc : any) {
+    Array.from(soc);
+    console.log(soc);
 
-
-  addSuiviSociety(soc: any) {
-  this.tabSociety = [soc, ...this.tabSociety]
   }
+
 }
