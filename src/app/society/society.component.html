@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nom</th>
+        <th>Reponse</th>
+        <th>Entretien RH</th>
+        <th>Entretien Tech</th>
+        <th>Retour Societe</th>
+        <th>Emission du CV</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let info of ListeSociety">
+      <td>{{ info.id }}</td>
+      <td>{{ info.nom }}</td>
+      <td *ngIf="info.reponse">A repondu</td>
+      <td *ngIf="info.EntretienRH">Realiser</td>
+      <td *ngIf="info.EntretienTech === true">Realiser</td>
+      <td>{{ info.RetourSociete }}</td>
+      <td>{{ info.dateEmissionCV }}</td>
+      <td>{{ info.statut }}</td>
+    </tr>
+  </table>
+</div>

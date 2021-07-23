@@ -1,0 +1,32 @@
+
+.background{
+  background-color: black;
+  color: whitesmoke;
+}
+.example-small-box, .example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  height: 100px;
+  width: 100px;
+}
+
+.example-large-box {
+  height: 500px;
+  width: 700px;
+}
+.home{
+  margin-bottom: 400px;
+  margin-right: 500px;
+  padding: 50px;
+  float: right;
+
+
+}
+
