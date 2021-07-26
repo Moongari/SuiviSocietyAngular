@@ -1,16 +1,40 @@
 <div class="container mt-5">
-  <form #f="ngForm" (submit)="addSociety(f)">
-
-    <label for="societyname">SOCITETE</label><br />
+  <form novalidate #monForm="ngForm" (ngSubmit)="saveSociety()">
+    <label for="nom">SOCITETE</label><br />
     <input
       type="text"
-      id="societyname"
+      id="nom"
       class="form-control"
-      placeholder="Enter society" ngModel name="societyname"/>
-    <br/>
+      placeholder="Enter society"
+      [(ngModel)]="Society.nom"
+      nameVar="ngModel"
+      required
+      maxlength="10"
+      name="nom"
+      #VarName="ngModel"
+      [ngClass]="{ 'is-invalid': VarName.touched && !VarName.valid }"
+    />
+    <div class="invalid-feedback">
+      <span *ngIf="VarName.errors?.required">
+        Veuillez saisir une Société !
+      </span>
+      <span *ngIf="VarName.errors?.minlength">
+        Vous devez saisir au moins 10 caracteres
+      </span>
+    </div>
 
-    <label for="localite">LIEU</label> <br />
-    <select id="localite" class="form-select form-select-sm" ngModel name="localite">
+    <br />
+
+    <label for="lieu">LIEU</label> <br />
+    <select
+      id="lieu"
+      class="form-select form-select-sm"
+      name="lieu"
+      [(ngModel)]="Society.lieu"
+      #VarLieu="ngModel"
+      required
+      [ngClass]="{ 'is-invalid': VarLieu.touched && !VarLieu.valid }"
+    >
       <option selected value="">--------</option>
       <br />
       <option value="Luxembourg">Luxembourg</option>
@@ -18,16 +42,37 @@
       <option value="Belfort">Dijon</option>
       <option value="Besancon">Besancon</option>
     </select>
+
     <br />
     <label for="reponseEmail">REPONSE EMAIL</label> <br />
-    <select id="reponseEmail" class="form-select form-select-sm" ngModel name="reponseEmail">
+    <select
+      id="reponseEmail"
+      class="form-select form-select-sm"
+      name="reponseEmail"
+      [(ngModel)]="Society.reponseEmail"
+      #VarEmailResponse="ngModel"
+      required
+      [ngClass]="{
+        'is-invalid': VarEmailResponse.touched && !VarEmailResponse.valid
+      }"
+    >
       <option value="">--------</option>
       <option value="OUI">OUI</option>
       <option value="NON">NON</option>
     </select>
     <br />
     <label for="entretienRH">ENTRETIEN RH</label> <br />
-    <select id="entretienRH" class="form-select form-select-sm" ngModel name="entretienRH">
+    <select
+      id="entretienRH"
+      class="form-select form-select-sm"
+      name="entretienRH"
+      [(ngModel)]="Society.entretienRH"
+      #VarENTRETIENRH="ngModel"
+      required
+      [ngClass]="{
+        'is-invalid': VarENTRETIENRH.touched && !VarENTRETIENRH.valid
+      }"
+    >
       <option value="">--------</option>
       <option value="Realise">realise</option>
       <option value="nonRealise">non realise</option>
@@ -35,25 +80,88 @@
 
     <br />
     <label for="entretienTech">ENTRETIEN TECHNIQUE</label> <br />
-    <select id="entretienTech" class="form-select form-select-sm" ngModel name="entretienTech">
+    <select
+      id="entretienTech"
+      class="form-select form-select-sm"
+      name="entretienTech"
+      [(ngModel)]="Society.entretienTech"
+      #VarEntretienTech="ngModel"
+      required
+      [ngClass]="{
+        'is-invalid': VarEntretienTech.touched && !VarEntretienTech.valid
+      }"
+    >
       <option value="">--------</option>
       <option value="Realise">realise</option>
       <option value="nonRealise">non realise</option>
     </select>
     <br />
     <label for="statut">SITUATION ACTUELLE</label> <br />
-    <select id="statut" class="form-select form-select-sm" ngModel name="statut">
+    <select
+      id="statut"
+      class="form-select form-select-sm"
+      name="statut"
+      [(ngModel)]="Society.statut"
+      #VarStatut="ngModel"
+      required
+      [ngClass]="{
+        'is-invalid': VarStatut.touched && !VarStatut.valid
+      }"
+    >
       <option value="">--------</option>
       <option value="encours">EN COURS</option>
       <option value="pasdeReponse">pas de réponse</option>
     </select>
     <br />
     <label for="dateContact">DATE DU PREMIER CONTACT</label> <br />
-    <input type="text" id="dateContact" class="form-control" ngModel name="dateContact"/><br />
+    <input
+      type="date"
+      id="dateContact"
+      class="form-control"
+      name="dateContact"
+      [(ngModel)]="Society.dateContact"
+      #VarDateContact="ngModel"
+      required
+      date
+      [ngClass]="{
+        'is-invalid': VarDateContact.touched && !VarDateContact.valid
+      }"
+    />
+    <div class="invalid-feedback">
+      <span *ngIf="VarDateContact.errors?.required">
+        Veuillez saisir une date
+      </span>
+      <span *ngIf="VarDateContact.errors?.date">
+        Vous devez saisir moins 10 caracteres
+      </span>
+    </div>
+
+    <br />
     <br />
     <label for="PersonneContact">PERSONNE CONTACTE</label> <br />
-    <input type="text" id="PersonneContact" class="form-control" ngModel name="PersonneContact"/><br />
+    <input
+      type="text"
+      id="PersonneContact"
+      class="form-control"
+      name="PersonneContact"
+      [(ngModel)]="Society.PersonneContact"
+      #VarPersonneContact="ngModel"
+      required
+      maxlength="15"
+      [ngClass]="{
+        'is-invalid': VarPersonneContact.touched && !VarPersonneContact.valid
+      }"
+    />
+    <div class="invalid-feedback">
+      <span *ngIf="VarPersonneContact.errors?.required">
+        Veuillez saisir le nom d'une personne en contact !
+      </span>
+      <span *ngIf="VarPersonneContact.errors?.maxlength">
+        Vous devez saisir moins 15 caracteres
+      </span>
+    </div>
+    <br />
 
-    <button type="submit" class="btn btn-primary">sauvegarder</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!monForm.valid">sauvegarder</button>
   </form>
 </div>

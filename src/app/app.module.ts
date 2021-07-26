@@ -11,6 +11,7 @@ import { SocietyComponent } from './society/society.component';
 import { MatTableModule } from '@angular/material/table';
 import { CreateSocietyComponent } from './create-society/create-society.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatTableModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

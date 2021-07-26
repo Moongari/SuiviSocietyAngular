@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Society } from '../model/society.model';
 import { SocieteService } from '../services/societe.service';
 
 @Component({
@@ -10,10 +11,29 @@ import { SocieteService } from '../services/societe.service';
 export class CreateSocietyComponent implements OnInit {
   constructor(private SocieServ: SocieteService) {}
 
+  public Society = new Society();
   ngOnInit(): void {}
 
+  @Input() societyDetails = {
+    nom: '',
+    lieu: '',
+    reponseEmail: '',
+    entretienRH: '',
+    entretienTech: '',
+    statut: '',
+    dateContact: 'string',
+    PersonneContact: '',
+  };
+
+  ArrSociety: Array<Society> = [];
+
   //ajouter les societes nouvellement créer dans un tableau de Service
-  addSociety(form : any) {
-    this.SocieServ.addSuiviSociety(form.value);
+  public saveSociety() {
+
+   // console.log('valeurs :', JSON.stringify(monForm.value));
+
+    this.SocieServ.CreateSocietyInfo(this.Society).subscribe(data => {
+      console.log(data)
+    })
   }
 }

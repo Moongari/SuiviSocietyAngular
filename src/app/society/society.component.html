@@ -1,45 +1,106 @@
-<div class="container">
-  <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+<nav class="navbar navbar-expand-md bg-light justify-content-left">
+  <ul class="navbar navbar-nav">
+    <li class="nav-item">
+      <button
+        (click)="getAllSociety()"
+        class="btn btn-primary ml-5"
+        id="AllSociety"
+      >
+        All Society
+      </button>
+    </li>
+    <li class="nav-item">
+      <button
+        (click)="getSelectedSocietyStatutEncours()"
+        class="btn btn-primary ml-5"
+        id="Statut"
+      >
+        Status In Progress
+      </button>
+    </li>
+  </ul>
+</nav>
 
-    <!-- Position Column -->
+
+  <div class="text-center">
+    <div class="spinner-border" role="status" *ngIf="isloading">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+<div class="container">
+  <table class="table table-hover" *ngIf="allSociety">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th>lieu</th>
+        <th>reponseEmail</th>
+        <th>entretienRH</th>
+        <th>entretienTech</th>
+        <th>statut</th>
+        <th>dateContact</th>
+        <th>PersonneContact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let soc of allSociety">
+        <td>{{ soc.id }}</td>
+        <td>{{ soc.nom }}</td>
+        <td>{{ soc.lieu }}</td>
+        <td>{{ soc.reponseEmail }}</td>
+        <td>{{ soc.entretienRH }}</td>
+        <td>{{ soc.entretienTech }}</td>
+        <td>{{ soc.statut }}</td>
+        <td>{{ soc.dateContact }}</td>
+        <td>{{ soc.PersonneContact }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!---
+  <table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+   Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition"
+
+
     <ng-container matColumnDef="id" >
       <th mat-header-cell *matHeaderCellDef >No.</th>
       <td mat-cell *matCellDef="let element" class="position">{{ element.id }}</td>
     </ng-container>
 
-    <!-- Name Column -->
+
     <ng-container matColumnDef="NOM">
       <th mat-header-cell *matHeaderCellDef>NOM</th>
       <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="LIEU">
       <th mat-header-cell *matHeaderCellDef>LIEU</th>
       <td mat-cell *matCellDef="let element">{{ element.lieu }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="Reponse-Email">
       <th mat-header-cell *matHeaderCellDef>Reponse-Email</th>
       <td mat-cell *matCellDef="let element">{{ element.reponseEmail }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="Entretien-RH">
       <th mat-header-cell *matHeaderCellDef>Entretien-RH</th>
       <td mat-cell *matCellDef="let element">{{ element.entretienRH }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="Entretien-Tech">
       <th mat-header-cell *matHeaderCellDef>Entretien-Tech</th>
       <td mat-cell *matCellDef="let element">{{ element.entretienTech }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="statut">
       <th mat-header-cell *matHeaderCellDef>statut</th>
       <td mat-cell *matCellDef="let element">{{ element.statut }}</td>
@@ -57,5 +118,4 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</div>
+  </table> -->
