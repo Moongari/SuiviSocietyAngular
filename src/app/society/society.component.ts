@@ -22,6 +22,9 @@ export class SocietyComponent implements OnInit {
   isloading = true;
   buttonDisabled: boolean;
 
+
+
+
   // avec le dollars on definit un objet de type Observable
   // ceci nous permet de gerer autrement l'ecoute de notre objet Observable ald de subscribe
 
@@ -40,6 +43,11 @@ export class SocietyComponent implements OnInit {
   constructor(private SocService: SocieteService) {}
 
   ngOnInit(): void {this.buttonDisabled = false;}
+
+
+
+
+
 
   // recupere les données
   getData() {

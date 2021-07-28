@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <form novalidate #monForm="ngForm" (ngSubmit)="saveSociety()">
+  <form novalidate #monForm="ngForm" (ngSubmit)="saveSociety()" >
     <label for="nom">SOCITETE</label><br />
     <input
       type="text"
@@ -161,7 +161,18 @@
       </span>
     </div>
     <br />
-
-    <button type="submit" class="btn btn-primary" [disabled]="!monForm.valid">sauvegarder</button>
+    <label for="note">Interêt</label>
+    <br/>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="Society.interet"
+      #Varnote="ngModel"
+      minlength="0"
+      required
+    /><br/> <br/>
+    <button type="submit" class="btn btn-primary" [disabled]="!monForm.valid">
+      sauvegarder
+    </button>
   </form>
 </div>

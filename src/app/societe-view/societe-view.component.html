@@ -1,0 +1,37 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{ title }}</h1>
+    <p class="lead"></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>SOCIETES</h2>
+      <p>MISE A JOUR : :{{ lastUpdate | date: "ddMMyyyy" | uppercase }}</p>
+      <ul class="list-group">
+        <app-home
+          *ngFor="let soc of AllSociete; let i = index"
+          [indexOfSociete]="i"
+          [SocieteName]="soc.nom"
+          [statut]="soc.statut"
+          [informationComplementaire]="soc.information"
+          [note]="soc.note"
+        ></app-home>
+      </ul>
+      <br />
+      <button
+        class="btn btn-success "
+        [disabled]="!isAuth"
+        (click)="onVerification()"
+      >
+        Tout valider
+      </button>
+      <button class="btn btn-danger ml-10" (click)="onResetStatut() ">
+        RESET STATUT
+      </button>
+    </div>
+  </div>
+</div>

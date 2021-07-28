@@ -21,33 +21,39 @@
   </ul>
 </nav>
 
-
-  <div class="text-center">
-    <div class="spinner-border" role="status" *ngIf="isloading">
-      <span class="sr-only">Loading...</span>
-    </div>
+<div class="text-center">
+  <div class="spinner-border" role="status" *ngIf="isloading">
+    <span class="sr-only">Loading...</span>
   </div>
-
+</div>
 
 <div class="container">
-  <table class="table table-hover" *ngIf="allSociety">
+  <table class="table table-hover responsive" *ngIf="allSociety">
     <thead>
       <tr>
-        <th>id</th>
-        <th>nom</th>
-        <th>lieu</th>
-        <th>reponseEmail</th>
-        <th>entretienRH</th>
-        <th>entretienTech</th>
-        <th>statut</th>
-        <th>dateContact</th>
-        <th>PersonneContact</th>
+        <th>Identifiant</th>
+        <th>SOCIETE</th>
+        <th>LIEU</th>
+        <th>Reponse-Email</th>
+        <th>Entretien-RH</th>
+        <th>Entretien-Tech</th>
+        <th>Statut</th>
+        <th>Date</th>
+        <th>Personne</th>
+        <th>Note</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let soc of allSociety">
         <td>{{ soc.id }}</td>
-        <td>{{ soc.nom }}</td>
+        <td>
+          <button
+            class="btn btn-primary"
+            routerLink="/SocieteDetails/{{ soc.id }}"
+          >
+            {{ soc.nom }}
+          </button>
+        </td>
         <td>{{ soc.lieu }}</td>
         <td>{{ soc.reponseEmail }}</td>
         <td>{{ soc.entretienRH }}</td>
@@ -55,10 +61,13 @@
         <td>{{ soc.statut }}</td>
         <td>{{ soc.dateContact }}</td>
         <td>{{ soc.PersonneContact }}</td>
+        <td>{{ soc.interet }}</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+
 
 <!---
   <table mat-table [dataSource]="datasource" class="mat-elevation-z8">

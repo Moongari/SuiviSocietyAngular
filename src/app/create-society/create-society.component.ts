@@ -9,6 +9,7 @@ import { SocieteService } from '../services/societe.service';
   styleUrls: ['./create-society.component.scss'],
 })
 export class CreateSocietyComponent implements OnInit {
+  [x: string]: any;
   constructor(private SocieServ: SocieteService) {}
 
   public Society = new Society();
@@ -34,6 +35,7 @@ export class CreateSocietyComponent implements OnInit {
 
     this.SocieServ.CreateSocietyInfo(this.Society).subscribe(data => {
       console.log(data)
+      this.router.navigate(['/societe'])
     })
   }
 }

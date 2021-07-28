@@ -10,14 +10,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SocietyComponent } from './society/society.component';
 import { MatTableModule } from '@angular/material/table';
 import { CreateSocietyComponent } from './create-society/create-society.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SocietyDetailsComponent } from './society-details/society-details.component';
+import { AuthService } from './services/auth.service';
+import { TraitementSocieteService } from './services/traitementSociete.service';
+import { SocieteViewComponent } from './societe-view/societe-view.component';
+import { AuthComponent } from './auth/auth.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SocietyComponent,
     CreateSocietyComponent,
+    SocietyDetailsComponent,
+    SocieteViewComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +39,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatTableModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService,TraitementSocieteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

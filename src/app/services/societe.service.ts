@@ -30,9 +30,14 @@ export class SocieteService {
     return this.httpClient.get<Society[]>(host + '/society');
   }
 
-  getSelectedSociety(id: number): Observable<Society[]> {
+  getSelectedSociety(id: number): Observable<Society> {
     let host = environment.host;
-    return this.httpClient.get<Society[]>(host + '/society/' + id);
+    const url = `${host}/society/${id}`;
+    return this.httpClient.get<Society>(url)
+      .pipe(
+        retry(1),
+        catchError((err) => this.httpError(err))
+    )
   }
 
   getSelectedSocietyStatutEncours(): Observable<Society[]> {
@@ -41,18 +46,21 @@ export class SocieteService {
     return this.httpClient.get<Society[]>(host + '/society?statut=En cours');
   }
 
+  getSociety(id: number): Observable<Society[]> {
+    let host = environment.host;
+    const url = `${host}/society/${id}`;
+    return this.httpClient.get<Society[]>(url);
+  }
 
   //créer une nouvelle societe
   CreateSocietyInfo(societe: Society): Observable<any> {
     let host = environment.host;
     const body = JSON.stringify(societe);
-    console.log("Body"+body);
+    console.log('Body' + body);
     return this.httpClient.post(host + '/society', body, this.httpOptions).pipe(
-
       retry(1),
-      catchError(err=>this.httpError(err))
-
-    )
+      catchError((err) => this.httpError(err))
+    );
   }
 
   httpError(error: any) {
@@ -66,5 +74,9 @@ export class SocieteService {
     }
     console.log(msg);
     return throwError(msg);
+  }
+
+  failureCallback(erreur: any) {
+    console.error("L'opération a échoué avec le message : " + erreur);
   }
 }

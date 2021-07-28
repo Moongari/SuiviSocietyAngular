@@ -1,0 +1,162 @@
+<p>society-details works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="card-sm6 mt-5">
+      <div class="card-header">
+        EDIT SOCIETY
+      </div>
+      <div class="card-body">
+
+        <div [hidden]="submitted">
+          <form novalidate (ngSubmit)="updateSociety()" #monForm="ngForm">
+            <div class="form-group col-sm-4">
+              <label for="firstname">Nom</label>
+              <input
+              type="text"
+              id="nom"
+              class="form-control"
+              placeholder="Enter society"
+              [(ngModel)]="Societe.nom"
+              nameVar="ngModel"
+              required
+              maxlength="10"
+              name="nom"
+              #VarName="ngModel"
+              [ngClass]="{ 'is-invalid': VarName.touched && !VarName.valid }"
+              />
+            </div>
+            <br>
+            <div class="invalid-feedback col-sm-4">
+              <span *ngIf="monForm.errors?.required">
+                Veuillez saisir une Société !
+              </span>
+              <span *ngIf="monForm.errors?.minlength">
+                Vous devez saisir au moins 10 caracteres
+              </span>
+            </div>
+            <br>
+            <div class="form-group col-sm-4">
+              <label for="lieu">LIEU</label>
+              <input
+                type="text"
+                class="form-control"
+                id="LIEU"
+                required
+                [(ngModel)]="Societe.lieu"
+                name="LIEU"
+              />
+            </div>
+            <br>
+            <div class="form-group col-sm-4">
+              <label for="age">reponseEmail</label>
+              <input
+              type="text"
+              class="form-control"
+              id="reponseEmail"
+              required
+              [(ngModel)]="Societe.reponseEmail"
+              name="reponseEmail"
+            />
+            </div>
+              <br>
+              <div class="form-group col-sm-4">
+                <label for="entretienRH">entretienRH</label>
+                <input
+                type="text"
+                class="form-control"
+                id="entretienRH"
+                required
+                [(ngModel)]="Societe.entretienRH"
+                name="entretienRH"
+              />
+              </div>
+                <br>
+                <div class="form-group col-sm-4">
+                  <label for="entretienTech">entretienTech</label>
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="entretienTech"
+                  required
+                  [(ngModel)]="Societe.entretienTech"
+                  name="entretienTech"
+                />
+                </div>
+                  <br>
+                  <div class="form-group col-sm-4">
+                    <label for="statut">statut</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    id="statut"
+                    required
+                    [(ngModel)]="Societe.statut"
+                    name="statut"
+                  />
+                  </div>
+                    <br>
+                    <div class="form-group col-sm-4">
+                      <label for="dateContact">dateContact</label>
+                      <input
+                      type="text"
+                      class="form-control"
+                      id="dateContact"
+                      required
+                      name="dateContact"
+                      [(ngModel)]="Societe.dateContact"
+                      name="dateContact"
+
+                    />
+                    </div>
+                      <br>
+                      <div class="form-group col-sm-4">
+                        <label for="PersonneContact">PersonneContact</label>
+                        <input
+                        type="text"
+                        class="form-control"
+                        id="PersonneContact"
+                        required
+                        [(ngModel)]="Societe.PersonneContact"
+                        name="PersonneContact"
+                      />
+                      </div>
+                        <br>
+                        <div class="form-group col-sm-4">
+                          <label for="interet">interet</label>
+                          <input
+                          type="number"
+                          class="form-control"
+                          id="interet"
+                          required
+                          [(ngModel)]="Societe.interet"
+                          name="interet"
+                        />
+                        </div>
+                          <br>
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success">Update</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="card-footer text-muted">
+      update your data of society contact
+      </div>
+    </div>
+
+
+
+    <div [hidden]="!submitted">
+      <h4>Update successfully!</h4>
+      <div class="btn-group">
+        <button class="btn btn-primary">Back</button>
+        <button class="btn btn-success">Edit</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

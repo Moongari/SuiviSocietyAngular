@@ -1,15 +1,16 @@
 {
   "society": [
     {
-      "id": 1,
       "nom": "SopraSteria",
       "lieu": "Luxembourg",
       "reponseEmail": "oui",
       "entretienRH": "Realise",
       "entretienTech": "Realise",
       "statut": "En cours",
-      "dateContact": "12/07/2021",
-      "PersonneContact": "Valentin"
+      "dateContact": "08/07/2021",
+      "PersonneContact": "Valentin",
+      "interet": 3,
+      "id": 1
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "entretienTech": "Realise",
       "statut": "En cours",
       "dateContact": "08/07/2021",
-      "PersonneContact": "MONIN"
+      "PersonneContact": "MONIN",
+      "interet": 2
     },
     {
       "id": 3,
@@ -31,7 +33,8 @@
       "entretienTech": "non realise",
       "statut": "aucun",
       "dateContact": "23/07/2021",
-      "PersonneContact": "Graziella GENCO"
+      "PersonneContact": "Graziella GENCO",
+      "interet": 1
     },
     {
       "id": 4,
@@ -42,30 +45,8 @@
       "entretienTech": "non realise",
       "statut": "En cours",
       "dateContact": "23/07/2021",
-      "PersonneContact": "Graziella GENCO"
-    },
-    {
-      "nom": "ms-innov.com",
-      "lieu": "Belfort",
-      "reponseEmail": "oui",
-      "entretienRH": "non Realise",
-      "entretienTech": "non realise",
-      "statut": "En attente",
-      "dateContact": "23/07/2021",
-      "PersonneContact": "Graziella GENCOT",
-      "id": 5
-    },
-    {
-      "nom": "MOUNGARI",
-      "lieu": "Belfort",
-      "reponseEmail": "OUI",
-      "entretienRH": "Realise",
-      "entretienTech": "Realise",
-      "statut": "encours",
-      "dateContact": "12/07/2021",
-      "PersonneContact": "OTTO",
-      "id": 6
+      "PersonneContact": "Graziella GENCO",
+      "interet": 3
     }
-
   ]
 }
