@@ -3,19 +3,13 @@ import { TraitementSocieteService } from '../services/traitementSociete.service'
 
 @Component({
   selector: 'app-home',
-  templateUrl:'./home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   isAuth = false;
 
-  constructor(private traitementSoc: TraitementSocieteService) {
-
-
-   }
-
-
+  constructor(private traitementSoc: TraitementSocieteService) {}
 
   title: string;
 
@@ -25,13 +19,9 @@ export class HomeComponent implements OnInit {
   @Input() informationComplementaire: string;
   @Input() listeSociete: string;
   @Input() indexOfSociete: number;
+  @Input() id: number;
 
-
-  ngOnInit(): void {
-
-
-  }
-
+  ngOnInit(): void {}
 
   getStatus() {
     return this.statut;
@@ -43,17 +33,16 @@ export class HomeComponent implements OnInit {
     } else if (this.statut === 'STEP 1') {
       return 'blue';
     } else if (this.statut === 'STEP 2') {
-      return 'gray'
+      return 'gray';
     }
     return 'red';
   }
   getFont() {
     if (this.statut === 'EN COURS') {
-      return "Times New Roman";
+      return 'Times New Roman';
     } else {
-      return "Arial";
+      return 'Arial';
     }
-
   }
 
   onEnCours() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TraitementSocieteService } from '../services/traitementSociete.service';
 
 @Component({
@@ -8,8 +9,9 @@ import { TraitementSocieteService } from '../services/traitementSociete.service'
 })
 export class SocieteViewComponent implements OnInit {
 
+  societeSubscription: Subscription;
   constructor(private traitementSociete: TraitementSocieteService) {
-    this.AllSociete = this.traitementSociete.AllSociete;
+
   }
 
   title = 'PROSPECTION DES ENTREPRISES ET ECHANGES';
@@ -19,7 +21,13 @@ export class SocieteViewComponent implements OnInit {
 
   ngOnInit(): void {
     //this.ChangeAuth();
-
+    //this.AllSociete = this.traitementSociete.AllSociete;
+    this.societeSubscription = this.traitementSociete.SocieteSubject.subscribe(
+      (ListOFsociete: any[]) => {
+        this.AllSociete = ListOFsociete;
+      }
+    );
+    this.traitementSociete.EmitSocieteSubject();
 
   }
 
@@ -27,7 +35,7 @@ export class SocieteViewComponent implements OnInit {
     setTimeout(
       () => {
         this.isAuth = true;
-      }, 4000
+      }, 2000
     );
   }
 

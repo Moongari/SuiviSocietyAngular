@@ -8,5 +8,6 @@ export interface SocietyInfo {
   statut: string;
   dateContact: string;
   PersonneContact: string;
+  interet: number;
 
 }

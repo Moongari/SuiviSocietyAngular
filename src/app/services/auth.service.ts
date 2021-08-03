@@ -10,7 +10,7 @@ export class AuthService {
           () => {
             this.isAuth = true;
             resolve(true);
-          }, 3000
+          }, 2000
         )
       }
     )

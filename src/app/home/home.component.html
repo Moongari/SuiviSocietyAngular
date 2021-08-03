@@ -1,28 +1,51 @@
+<li
+  [ngClass]="{
+    'list-group-item': true,
+    'list-group-item-success': getStatus() === 'EN COURS',
+    'list-group-item-primary': getStatus() === 'STEP 1',
+    'list-group-item-secondary': getStatus() === 'STEP 2',
+    'list-group-item-danger': getStatus() === 'NON DEMARRER'
+  }"
+>
+  <div
+    style="width: 20px; height: 20px; background-color: rgb(233, 112, 13)"
+    *ngIf="getStatus() === 'EN COURS'"
+  ></div>
 
+  <h3 [ngStyle]="{ color: getColor(), 'font-Family': getFont() }">
+    SOCIETE : {{ SocieteName }}
+  </h3>
+  <h4 [ngStyle]="{ color: getColor(), 'font-Family': getFont() }">
+    STATUT : {{ getStatus() }}
+  </h4>
+  <p [ngStyle]="{ color: getColor(), 'font-Family': getFont() }">
+    INFORMATION : {{ informationComplementaire }}
+  </p>
+  <br />
+  <a [routerLink]="[id]">Détail</a><br />
+  <label id="note" [ngStyle]="{ color: getColor(), 'font-Family': getFont() }"
+    >NOTE ATTRIBUEE</label
+  ><br />
 
-<li [ngClass]="{'list-group-item': true,
-                'list-group-item-success': getStatus() === 'EN COURS',
-                'list-group-item-primary': getStatus() === 'STEP 1',
-                'list-group-item-secondary': getStatus() === 'STEP 2',
-                'list-group-item-danger': getStatus() === 'NON DEMARRER'
-}">
-  <div style="width:20px;height:20px; background-color: rgb(233, 112, 13);"
-  *ngIf="getStatus() === 'EN COURS'"></div>
-  <h3 [ngStyle]="{'color':getColor() ,'font-Family':getFont()}">SOCIETE : {{SocieteName}}</h3>
-  <h4 [ngStyle]="{'color':getColor() ,'font-Family':getFont()}">STATUT : {{getStatus()}} </h4>
-  <p [ngStyle]="{'color':getColor() ,'font-Family':getFont()}">INFORMATION : {{informationComplementaire}}</p><br>
-  <label id="note" [ngStyle]="{'color':getColor() ,'font-Family':getFont()}">NOTE ATTRIBUEE</label><br>
-  <input type="text" class="form-control" [(ngModel)]="note" id="noteValeur"><br>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="note"
+    id="noteValeur"
+  /><br />
 
   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-    <button class="btn btn btn-outline-primary" (click)="onEnCours()">EN COURS</button>
-    <button class="btn btn-outline-primary" (click)="onStepONE()">STEP 1</button>
-    <button class="btn btn-outline-primary" (click)="onStepTwo()">STEP 2</button>
-    <button class="btn btn-outline-primary" (click)="onNoStarting()">ATTENTE</button>
+    <button class="btn btn btn-outline-primary" (click)="onEnCours()">
+      EN COURS
+    </button>
+    <button class="btn btn-outline-primary" (click)="onStepONE()">
+      STEP 1
+    </button>
+    <button class="btn btn-outline-primary" (click)="onStepTwo()">
+      STEP 2
+    </button>
+    <button class="btn btn-outline-primary" (click)="onNoStarting()">
+      ATTENTE
+    </button>
   </div>
 </li>
-
-
-
-
-
